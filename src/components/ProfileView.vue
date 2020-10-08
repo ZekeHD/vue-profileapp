@@ -10,6 +10,9 @@
       <p><b>Wants to:</b> {{ purpose }}</p>
       <p><b>More about me:</b> {{ bio }}</p>
     </div>
+    <div class="delete-button">
+      <button @click="this.$emit('delete-profile', id)">DELETE</button>
+    </div>
   </div>
 </template>
 
@@ -17,7 +20,7 @@
 export default {
   name: 'ProfileView',
   props: {
-      id: Number,
+      id: String,
       profilePicUrl: String,
       name: String,
       location: String,
@@ -59,6 +62,14 @@ export default {
 
       font-size: 24px;
       margin-bottom: 4px;
+    }
+  }
+
+  .delete-button {
+    button {
+      cursor: pointer;
+      width: 100px;
+      height: 35px;
     }
   }
 }

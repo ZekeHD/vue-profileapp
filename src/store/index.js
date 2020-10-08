@@ -1,10 +1,11 @@
 import { createStore } from 'vuex';
+import { uniqueId } from 'lodash';
 
 export default createStore({
   state: {
     profiles: [
       {
-        id: 1,
+        id: uniqueId(),
         profilePicUrl: 'https://i.imgur.com/S6rGaeA.png',
         name: 'Zach Smith',
         location: 'Augusta, GA',
@@ -13,7 +14,7 @@ export default createStore({
         bio: 'Full stack web developer for RSI, currently on the Ninety.io project.',
       },
       {
-        id: 2,
+        id: uniqueId(),
         profilePicUrl: 'https://i.imgur.com/mAVF7Cx.jpeg',
         name: 'Brad Pitt',
         location: 'Hollywood, probably',
@@ -26,11 +27,11 @@ export default createStore({
 
   // mutations are functions that affect the STATE
   mutations: {
-    MODIFY_PROFILES(state, { deleteProfile, profile }) {
+    MODIFY_PROFILES(state, { deleteProfile, profile, id }) {
       if (deleteProfile) {
-        state.profiles.splice(state.profiles.findIndex(prof => prof.id === profile.id), 1);
+        state.profiles.splice(state.profiles.findIndex(prof => id === prof.id), 1);
       } else {
-        profile.id = state.profiles.length;
+        profile.id = uniqueId();
         state.profiles = [ ...state.profiles, profile ];
       }
     }
@@ -38,8 +39,8 @@ export default createStore({
 
   // actions are functions that you call throughout your app that call mutations
   actions: {
-    modifyProfiles({ commit }, { deleteProfile, profile }) {
-      commit('MODIFY_PROFILES', { deleteProfile, profile });
+    modifyProfiles({ commit }, { deleteProfile, profile, id }) {
+      commit('MODIFY_PROFILES', { deleteProfile, profile, id });
     }
   },
   modules: {

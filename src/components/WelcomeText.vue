@@ -35,7 +35,7 @@ export default {
 .welcome-container {
   h1, h2 {
     opacity: 0;
-    transition: opacity 0.3s ease-out;
+    transition: opacity 0.3s ease;
   }
 
   .filled-out {

@@ -13,7 +13,7 @@
         <span>
           <select required v-model="person.purpose">
             <option selected disabled value="">Tell us why you're here!</option>
-            <option v-for="(reason, index) in dropdowns.purposes" :key="index" :value="reason">{{ reason }}</option>
+            <option v-for="(reason, key, index) in dropdowns.purposes" :value="reason" :key="index">{{ reason }}, {{ key }}</option>
           </select>
           <span class="required-warn">* required</span>
         </span>
@@ -21,6 +21,9 @@
         <button type="submit" @click="submitProfile">Sign up!</button>
       </form>
     </div>
+  </div>
+  <div class="profile-created__container">
+    <h1 class="profile-created" :class="{'show': profileCreated}">Congrats! Your profile has been created. Check the <router-link to="/browse">Browse page</router-link> to see it!</h1>
   </div>
 </template>
 
@@ -52,20 +55,27 @@ export default {
         interests: false,
         purpose: false
       },
-    }
+    },
+    profileCreated: false,
   }),
   methods: {
     submitProfile(e) {
       e.preventDefault();
       if (this.verifyForm()) {
-      this.$emit('add-profile', cloneDeep(this.person));
+        this.$emit('add-profile', cloneDeep(this.person));
 
-      this.person.profilePicUrl = '';
-      this.person.name = '';
-      this.person.location = '';
-      this.person.interests = '';
-      this.person.purpose = '';
-      this.person.bio = '';
+        this.person.profilePicUrl = '';
+        this.person.name = '';
+        this.person.location = '';
+        this.person.interests = '';
+        this.person.purpose = '';
+        this.person.bio = '';
+
+        this.profileCreated = true;
+
+        setTimeout(() => {
+          this.profileCreated = false;
+        }, 3000);
       }
     },
     verifyForm() {
@@ -158,6 +168,17 @@ export default {
           background-color: #6ab46a;
         }
       }
+    }
+  }
+}
+
+.profile-created__container {
+  .profile-created {
+    opacity: 0;
+    transition: opacity 1.5s ease;
+
+    &.show {
+      opacity: 1;
     }
   }
 }

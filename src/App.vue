@@ -39,6 +39,17 @@ body {
   p {
     margin: 0;
   }
+
+  a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #d2f4d2;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #84e184;
+    }
+  }
 }
 
 #nav {
@@ -46,16 +57,8 @@ body {
   font-size: 20px;
 
   a {
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
     margin-right: 30px;
-    color: #d2f4d2;
-    transition: color 0.2s ease;
-
-    &:hover {
-      color: #84e184;
-    }
+    text-transform: uppercase;
 
     &.router-link-exact-active {
       color: #84e184;

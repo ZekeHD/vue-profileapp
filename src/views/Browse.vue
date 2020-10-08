@@ -1,5 +1,5 @@
 <template>
-  <ProfileView v-for="profile in profiles" :key="profile.id" v-bind="profile"/>
+  <ProfileView v-for="profile in profiles" :key="profile.id" v-bind="profile" v-on:delete-profile="deleteProfile"/>
 </template>
 
 <script>
@@ -12,6 +12,11 @@ export default {
   store,
   components: {
     ProfileView
+  },
+  methods: {
+    deleteProfile(id) {
+      store.dispatch('modifyProfiles', { deleteProfile: true, profile: null, id });
+    }
   },
   computed: {
     profiles: () => store.state.profiles,

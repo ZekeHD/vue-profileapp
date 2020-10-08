@@ -2,7 +2,7 @@
   <div class="header-wrapper">
     <div class="header-titles">
       <h1>Hello! Be ready to be blown away by our wide selection of profiles to choose from!</h1>
-      <p>This is the home page. This really has no functionality, except for to tell you to navigate to the Create page or the Browse page.</p>
+      <p>This is the home page. This really has no functionality, except for to tell you to navigate to the <router-link to="/create">Create page</router-link> or the <router-link to="/browse">Browse page.</router-link></p>
       <p>Either way, stick around!</p>
     </div>
     <div class="big-title">
