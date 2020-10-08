@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import store from '../store';
+import { mapActions } from 'vuex';
 
 import CreateProfile from '../components/CreateProfile';
 import WelcomeText from '../components/WelcomeText';
@@ -19,9 +19,13 @@ export default {
     welcomeTextData: {},
   }),
   methods: {
+    // alternative in case we want to make 'modifyProfiles' a usable method
+    // on this component
+    // ...mapActions([ 'modifyProfiles' ]),
     mergePersonData(newData) { this.welcomeTextData = newData; },
     addProfile(profile) {
-      store.dispatch('modifyProfiles', { deleteProfile: false, profile });
+      // this.modifyProfiles({ deleteProfile: false, profile });
+      this.$store.dispatch('modifyProfiles', { deleteProfile: false, profile });
     }
   },
 }

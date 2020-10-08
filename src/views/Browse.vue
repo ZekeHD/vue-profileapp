@@ -3,24 +3,25 @@
 </template>
 
 <script>
-import store from '../store';
-
+// import store from '../store';
+import { mapState } from 'vuex';
 import ProfileView from '../components/ProfileView';
 
 export default {
   name: 'Browse',
-  store,
+  // store,
   components: {
     ProfileView
   },
   methods: {
     deleteProfile(id) {
-      store.dispatch('modifyProfiles', { deleteProfile: true, profile: null, id });
+      this.$store.dispatch('modifyProfiles', { deleteProfile: true, profile: null, id });
     }
   },
-  computed: {
-    profiles: () => store.state.profiles,
-  }
+  // computed: {
+  //   profiles() { return this.$store.state.profiles },
+  // },
+  computed: mapState([ 'profiles', 'foo' ]),
 }
 </script>
 

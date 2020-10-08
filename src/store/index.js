@@ -9,8 +9,8 @@ export default createStore({
         profilePicUrl: 'https://i.imgur.com/S6rGaeA.png',
         name: 'Zach Smith',
         location: 'Augusta, GA',
-        interests: 'Softball, baseball, anime tiddies',
-        purpose: 'idk',
+        interests: 'Softball, baseball, video editing',
+        purpose: 'Become an astronaut one day!',
         bio: 'Full stack web developer for RSI, currently on the Ninety.io project.',
       },
       {
@@ -19,10 +19,11 @@ export default createStore({
         name: 'Brad Pitt',
         location: 'Hollywood, probably',
         interests: "Haven't talked to him in a while, idk",
-        purpose: 'to make movies!',
-        bio: 'Makes movies.',
+        purpose: 'To make movies!',
+        bio: 'Idk, makes movies.',
       }
     ],
+    foo: 'bar'
   },
 
   // mutations are functions that affect the STATE
